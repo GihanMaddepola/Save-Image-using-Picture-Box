@@ -18,3 +18,29 @@ if (isedit == 0)
                             Clear();
                         }
                     }
+
+-------------------------------------------------------------------------------------------------------------------------------------
+                //In class
+                string headerName = null;
+                if (pcbHeader.Image != null)
+                {
+                    string path = Application.StartupPath;
+                    headerName = System.Guid.NewGuid().ToString() + ".jpg";
+                    pcbHeader.Image.Save(path + @"\HeaderFooters\" + headerName, ImageFormat.Jpeg);
+                }
+                
+                
+                -----------------------------------------------------------------------------------------------------------------------
+                //LoadHeaderFooterImage
+                    if(item.Header != null | item.Footer != null)
+                    {
+                        string path = Application.StartupPath + @"\HeaderFooters\";
+                        string header = path + item.Header;
+                        string footer = path + item.Footer;
+                        byte[] bytes = Encoding.ASCII.GetBytes(header + footer);
+                        MemoryStream mStream = new MemoryStream();
+                        pcbHeader.Image = Image.FromFile(header);
+                        pcbFooter.Image = Image.FromFile(footer);
+                        pcbHeader.SizeMode = PictureBoxSizeMode.Zoom;
+                        pcbFooter.SizeMode = PictureBoxSizeMode.Zoom;
+                    }
