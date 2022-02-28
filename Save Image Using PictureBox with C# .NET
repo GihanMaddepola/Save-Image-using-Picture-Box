@@ -1,0 +1,20 @@
+//Pass the picture box in Save & Update
+if (isedit == 0)
+                    {
+                        if (bp.AddNewPartner(details, bankdetails, ProductList, pcbHeader, pcbFooter,pcbCusLogo))
+                        {
+                            new Classes.ActivityLog().AddActivity(this.Text + "Add new partner. Name- " + txtName.Text);
+                            Common.SucessfullMessage("Successfully Saved");
+                            Clear();
+
+                        }
+                    }
+                    else
+                    {
+                        if (bp.EditSupplier(details, bankdetails, ProductList, pcbHeader, pcbFooter, pcbCusLogo))
+                        {
+                            new Classes.ActivityLog().AddActivity(this.Text + "Edit partner. Name- " + txtName.Text);
+                            Common.SucessfullMessage("Successfully Updated");
+                            Clear();
+                        }
+                    }
